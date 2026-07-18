@@ -1,0 +1,139 @@
+:root{
+  --paper:#faf7f2;
+  --ink:#1d1d1b;
+  --soft:#6b6862;
+  --line:#dcd6cc;
+  --accent:#c2452d;
+  --accent-dark:#9c3722;
+  --card:#ffffff;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:Georgia,'Times New Roman',serif;
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.65;
+  font-size:17px;
+}
+.mono{font-family:'Courier New',monospace}
+.wrap{max-width:880px;margin:0 auto;padding:0 22px}
+a{color:var(--accent)}
+a:hover{color:var(--accent-dark)}
+
+header{border-bottom:1px solid var(--line)}
+.topbar{display:flex;justify-content:space-between;align-items:baseline;padding:26px 0 18px;flex-wrap:wrap;gap:10px}
+.name{font-size:1.25rem;font-weight:bold;text-decoration:none;color:var(--ink);letter-spacing:.5px}
+.name em{color:var(--accent);font-style:normal}
+nav.menu{display:flex;gap:22px;flex-wrap:wrap}
+nav.menu a{
+  font-family:'Courier New',monospace;
+  font-size:.92rem;
+  text-decoration:none;
+  color:var(--soft);
+  padding-bottom:2px;
+}
+nav.menu a:hover{color:var(--ink)}
+nav.menu a.here{color:var(--ink);border-bottom:2px solid var(--accent)}
+
+main{padding:56px 0 72px}
+h1{font-size:2.1rem;line-height:1.25;margin-bottom:18px;font-weight:normal}
+h1 b{font-weight:bold}
+h2{font-size:1.35rem;margin:44px 0 14px;padding-top:6px}
+h2::before{content:"» ";color:var(--accent)}
+p{margin-bottom:16px;max-width:640px}
+p.lead{font-size:1.12rem;color:var(--soft)}
+.rule{border:none;border-top:1px solid var(--line);margin:40px 0}
+
+.tag{
+  font-family:'Courier New',monospace;
+  font-size:.8rem;
+  border:1px solid var(--line);
+  background:var(--card);
+  padding:3px 10px;
+  border-radius:3px;
+  display:inline-block;
+  margin:0 6px 8px 0;
+  color:var(--soft);
+}
+
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin:26px 0}
+.box{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:4px;
+  padding:24px;
+}
+.box h3{font-size:1.08rem;margin-bottom:8px}
+.box p{font-size:.95rem;color:var(--soft);margin-bottom:10px}
+.box ul{margin:10px 0 0 18px;font-size:.93rem;color:var(--soft)}
+.box li{margin-bottom:5px}
+
+.price-line{
+  display:flex;justify-content:space-between;align-items:baseline;
+  border-bottom:1px dashed var(--line);
+  padding:12px 2px;
+  max-width:640px;
+}
+.price-line:last-of-type{border-bottom:none}
+.price-line .what{max-width:70%}
+.price-line .what b{display:block}
+.price-line .what span{font-size:.88rem;color:var(--soft)}
+.price-line .cost{font-family:'Courier New',monospace;font-weight:bold;white-space:nowrap}
+
+.project{margin-bottom:38px;max-width:680px}
+.project h3{font-size:1.15rem;margin-bottom:6px}
+.project .meta{font-family:'Courier New',monospace;font-size:.82rem;color:var(--soft);margin-bottom:10px}
+.project p{font-size:.97rem}
+
+.note{
+  border-left:3px solid var(--accent);
+  padding:14px 18px;
+  background:var(--card);
+  margin:26px 0;
+  max-width:640px;
+  font-size:.95rem;
+}
+
+.cta{
+  display:inline-block;
+  background:var(--ink);
+  color:var(--paper);
+  text-decoration:none;
+  padding:12px 26px;
+  border-radius:3px;
+  font-family:'Courier New',monospace;
+  font-size:.95rem;
+  margin-top:8px;
+}
+.cta:hover{background:var(--accent);color:#fff}
+
+form{max-width:560px}
+.f{margin-bottom:16px}
+.f label{display:block;font-family:'Courier New',monospace;font-size:.85rem;margin-bottom:5px;color:var(--soft)}
+.f input,.f textarea,.f select{
+  width:100%;
+  font-family:Georgia,serif;
+  font-size:1rem;
+  padding:10px 12px;
+  border:1px solid var(--line);
+  border-radius:3px;
+  background:var(--card);
+  color:var(--ink);
+}
+.f input:focus,.f textarea:focus,.f select:focus{outline:none;border-color:var(--accent)}
+#formMsg{display:none;margin-top:12px;font-size:.95rem}
+
+details{border:1px solid var(--line);background:var(--card);border-radius:4px;margin-bottom:10px;max-width:680px}
+details summary{cursor:pointer;padding:14px 18px;font-weight:bold;font-size:.98rem}
+details p{padding:0 18px 14px;font-size:.94rem;color:var(--soft)}
+
+footer{border-top:1px solid var(--line);padding:26px 0 40px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:'Courier New',monospace;font-size:.85rem;color:var(--soft)}
+footer a{color:var(--soft)}
+
+@media(max-width:640px){
+  .two-col{grid-template-columns:1fr}
+  h1{font-size:1.7rem}
+  .price-line{flex-direction:column;gap:4px}
+  .price-line .what{max-width:100%}
+}
