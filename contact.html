@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — adam.dev</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.contact-methods{border:1px solid var(--line);background:var(--card);border-radius:4px;padding:18px 18px 8px;margin-bottom:16px}
+.contact-methods legend,.cm-title{font-family:'Courier New',monospace;font-size:.85rem;color:var(--soft);margin-bottom:10px;display:block}
+.cm-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 18px}
+.cm-hint{font-size:.82rem;color:var(--soft);margin:-6px 0 12px}
+.optional{color:var(--soft);font-weight:normal;font-size:.78rem}
+@media(max-width:560px){.cm-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap topbar">
+    <a class="name" href="index.html">adam<em>.</em>dev</a>
+    <nav class="menu">
+      <a href="index.html">home</a>
+      <a href="services.html">services</a>
+      <a href="projects.html">projects</a>
+      <a class="here" href="contact.html">contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <h1>Tell me what you need</h1>
+    <p class="lead">The more detail you give, the faster I can quote it. I reply within 24 hours, usually way sooner.</p>
+
+    <form id="contactForm" novalidate>
+      <div class="f">
+        <label for="name">your name</label>
+        <input type="text" id="name" required>
+      </div>
+
+      <div class="contact-methods">
+        <span class="cm-title">how should I reach you? — fill in at least one</span>
+        <div class="cm-grid">
+          <div class="f">
+            <label for="email">email</label>
+            <input type="email" id="email" placeholder="you@example.com">
+          </div>
+          <div class="f">
+            <label for="discord">discord username</label>
+            <input type="text" id="discord" placeholder="yourname">
+          </div>
+          <div class="f">
+            <label for="phone">phone / whatsapp <span class="optional">optional</span></label>
+            <input type="tel" id="phone" placeholder="+1 555 000 0000">
+          </div>
+          <div class="f">
+            <label for="telegram">telegram <span class="optional">optional</span></label>
+            <input type="text" id="telegram" placeholder="@yourname">
+          </div>
+        </div>
+        <p class="cm-hint">Whatever's easiest for you — I'll use the first one you list.</p>
+      </div>
+
+      <div class="f">
+        <label for="type">project type</label>
+        <select id="type">
+          <option>Discord bot</option>
+          <option>Website / landing page</option>
+          <option>Flask app</option>
+          <option>Fix or add to something existing</option>
+          <option>Not sure yet</option>
+        </select>
+      </div>
+      <div class="f">
+        <label for="details">what should it do?</label>
+        <textarea id="details" rows="5" required placeholder="Features, deadline, rough budget — whatever you know so far."></textarea>
+      </div>
+      <button type="submit" class="cta" style="border:none;cursor:pointer">→ send it</button>
+      <p id="formMsg"></p>
+    </form>
+
+    <hr class="rule">
+
+    <h2>Good to know before you write</h2>
+    <p>I work through a parent-managed freelance account (I'm a young developer, my parent oversees the business side). If we connect on a freelance platform, all chat and payment stays there — that protects both of us.</p>
+    <p>I don't take on projects I can't scope clearly. If your idea is fuzzy, that's fine — send it anyway and we'll shape it together before any money moves.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>adam.dev — bots &amp; web</span>
+    <span><a href="index.html">home</a> · <a href="services.html">services</a> · <a href="projects.html">projects</a></span>
+  </div>
+</footer>
+
+<script>
+document.getElementById("contactForm").addEventListener("submit",function(e){
+  e.preventDefault();
+  var msg=document.getElementById("formMsg");
+  var get=function(id){return document.getElementById(id).value.trim();};
+  var name=get("name");
+  var details=get("details");
+  var email=get("email");
+  var discord=get("discord");
+  var phone=get("phone");
+  var telegram=get("telegram");
+  var fail=function(t){msg.style.display="block";msg.style.color="#c2452d";msg.textContent=t;};
+  if(!name){fail("What's your name?");return;}
+  if(!email&&!discord&&!phone&&!telegram){fail("Give me at least one way to reach you — email, Discord, phone or Telegram.");return;}
+  if(email&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){fail("That email doesn't look right.");return;}
+  if(!details){fail("Tell me a bit about the project first.");return;}
+  var reach=email||discord||phone||telegram;
+  msg.style.display="block";
+  msg.style.color="#2c7a3f";
+  msg.textContent="Got it, "+name+". I'll get back to you at "+reach+" within 24 hours.";
+  this.reset();
+});
+</script>
+</body>
+</html>
